@@ -14,25 +14,25 @@ class Rolodex
 		@@ids += 1
 	end
 
-	def find_contact_by_info(info)
-		contacts.each do |x|
-			if x.id == info 
+	# def find_contact_by_id(id)
+	# 	contacts.each do |contact|
+	# 		if contact.id == id
+	# 			return contact
+	# 		else
+	# 			return "No ID"
+	# 		end
+	# 		display
+	# 	end
+	# end
+	def find_contact(id)
+		@contacts.detect { |x| x.id == id} 
 
-				# return contact
-			 # "First name: #{x.first_name}, Last name: #{x.last_name}, email: #{x.email}, note: #{x.note}"
-			
-			# elsif x.first_name == info
-			# puts "First name: #{x.first_name}, Last name: #{x.last_name}, email: #{x.email}, note: #{x.note}"
-
-			# elsif x.last_name == info
-			# puts "First name: #{x.first_name}, Last name: #{x.last_name}, email: #{x.email}, note: #{x.note}"
-
-			# elsif x.email == info
-			# puts "First name: #{x.first_name}, Last name: #{x.last_name}, email: #{x.email}, note: #{x.note}"
-			else		
-				 "There is no user with that id."
-			end
-		end
+				# puts "#{x.first_name} #{x.last_name}"
+	
+			# else		
+				 # puts "There is no user with that id."
+			# end
+		
 	end
 
 	def display_id(contact)

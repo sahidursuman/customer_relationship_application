@@ -13,10 +13,10 @@ class CRM
 	def print_main_menu
 		puts "\n --- Main Menu ---"
 		puts "[1] Add a contact"
-		puts "[2] Modify a display"
+		puts "[2] Modify a contact"
 		puts "[3] Display all contacts"
 		puts "[4] Display one contact"
-		puts "[5] Display an attribute"
+		puts "[5] Display all instances of an attribute"
 		puts "[6] Delete a contact"
 		puts "[7] Exit"
 		print "\nPlease select a number: "
@@ -67,35 +67,49 @@ class CRM
 
 	end
 
-	# def modify_contact
-	# 	print "Please enter ID number: "
-	# 	idnumber = gets.chomp
+	def modify_contact
+	
 
-	# # # 	if idnumber != Rolodex.initialize@contacts.pluck(:id)
-	# # # 		puts "ID is not present."
-	# # # 		return main_menu
-	# # # 	else
-	# # # 	end
-	# # end
+
+
+	end
 
 	def display_contacts
 		@rolodex.contacts.each do |x|
-			puts "\nFirst name: #{x.first_name},\tLast name: #{x.last_name}, \nemail: #{x.email}, \t5note: #{x.note}\n\n"
+			puts "#{@rolodex.display_id(x)}: "
+			puts "First name: #{x.first_name},\t\tLast Name: #{x.last_name}, \nEmail: #{x.email}, \tNote: #{x.note}\n\n"
 		end
 	end
 
 	def display_contact
+		puts "Enter the user ID"
+		id = gets.chomp.to_i
+		puts @rolodex.find_contact(id)
+		
+	end
+	
 
-		puts "Enter the user id of the contact you wish to display: "
-		check = gets.chomp.to_i
-		puts @rolodex.find_contact_by_info(check)
+	def display_attribute
 
-	# 	if @rolodex.contacts.include?(check) == true
-	# 		puts "lalala"
-	# 	else 
-	# 		puts "There is no contact with that id. "
-	# 	end
+		puts "\nEnter an attribute to display: \n1 = First Name \n2 = Last Name \n3 = Email \n4 = Notes"
+		data = gets.chomp.to_i
+		puts ""
+			@rolodex.contacts.each do |contact|
+			case data 
 
+				when 1
+				puts "#{@rolodex.display_id(contact)}: #{contact.first_name}"
+				when 2
+				puts "#{@rolodex.display_id(contact)}: #{contact.last_name}"
+				when 3
+				puts "#{@rolodex.display_id(contact)}: " + contact.email
+				when 4
+				puts "#{@rolodex.display_id(contact)}: " + contact.note
+				else 
+				puts "\n****Please enter a number 1-4!****\n"
+				return display_attribute
+			end			
+		end
 	end
 
 	def add_sample_data
@@ -104,31 +118,6 @@ class CRM
 		@rolodex.add_contact(Contact.new("Harry", "McGuaiver", "harmac@sample.com", "Smokes menthols."))
 		@rolodex.add_contact(Contact.new("Billy-jean", "King", "rocknroll@sample.com", "likes tennis."))
 	end
-
-	def display_attribute
-
-		puts "\nEnter an attribute to display: \n1 = First Name \n2 = Last Name \n3 = Email \n4 = Notes"
-		data = gets.chomp.downcase
-				
-			@rolodex.contacts.each do |contact|
-				case data 
-
-				when "1"
-				puts "#{@rolodex.display_id(contact)}: #{contact.first_name}"
-				when "2"
-				puts "#{@rolodex.display_id(contact)}: #{contact.last_name}"
-				when "3"
-				puts "#{@rolodex.display_id(contact)}: " + contact.email
-				when "4"
-				puts "#{@rolodex.display_id(contact)}: " + contact.note
-				else 
-				puts "\n****Please enter a number 1-4!****\n"
-				return display_attribute
-				end			
-		end
-
-	end
-
 	
 end
 

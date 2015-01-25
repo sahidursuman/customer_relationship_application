@@ -8,4 +8,8 @@ class Contact
 		@note = note
 	end
 
+	def to_s
+		"First name: #{x.first_name},\t\tLast Name: #{x.last_name}, \nEmail: #{x.email}, \tNote: #{x.note}\n\n"
+	end
 end
+
