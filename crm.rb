@@ -61,7 +61,7 @@ class CRM
 		print "Note: "
 		note = gets.chomp
 		
-		contact = Contact.new(first_name, last_name, email, note)
+		@contact = Contact.new(first_name, last_name, email, note)
 		@rolodex.add_contact(contact)
 		@rolodex.display_contact(contact)
 
@@ -82,12 +82,11 @@ class CRM
 	end
 
 	def display_contact
-		puts "Enter the user ID"
-		id = gets.chomp.to_i
-		puts @rolodex.find_contact(id)
+		
 		
 	end
-	
+
+
 
 	def display_attribute
 
