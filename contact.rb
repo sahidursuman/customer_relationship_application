@@ -9,7 +9,7 @@ class Contact
 	end
 
 	def to_s
-		puts "First name: #{@first_name},\t\tLast Name: #{@last_name}, \nEmail: #{@email}, \tNote: #{@note}\n"
+		"First name: #{@first_name},\t\tLast Name: #{@last_name}, \nEmail: #{@email}, \tNote: #{@note}\n"
 	end
 end
 

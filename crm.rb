@@ -25,7 +25,7 @@ class CRM
 	def main_menu
 		puts "\nWelcome to #{@name}!\n"
 
-		while true
+		loop do
 			print_main_menu
 			input = gets.chomp.to_i
 			choose_option(input)
@@ -35,18 +35,17 @@ class CRM
 
 	def choose_option(option)
 		case option
-			when 1 then add_contact
-			when 2 then modify_contact
-			when 3 then display_contacts
-			when 4 then display_contact
-			when 5 then display_attribute
-			when 6 then delete_contact
-			when 7 
-				puts "\nGoodbye!\n "
-				return
-			else 
-				puts "\nIncorrect Option. Try again."
-	
+		when 1 then add_contact
+		when 2 then modify_contact
+		when 3 then display_contacts
+		when 4 then display_contact
+		when 5 then display_attribute
+		when 6 then delete_contact
+		when 7 
+			puts "\nGoodbye!\n "
+			return
+		else 
+			puts "\nIncorrect Option. Try again."
 		end
 	end
 
@@ -83,9 +82,15 @@ class CRM
 
 	def display_contact
 		
+		puts "Enter the ID of the contact you wish to display: "
+		id = gets.chomp.to_i
 		
+		if (contact = @rolodex.display_one(id))
+			puts contact
+		else
+			puts "There is no contact with that ID"
+		end
 	end
-
 
 
 	def display_attribute

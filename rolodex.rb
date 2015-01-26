@@ -2,19 +2,22 @@ class Rolodex
 
 	attr_reader :contacts  
 
-	@@ids = 1001
-
 	def initialize
+		@next_id = 1001
 		@contacts = []
 	end
 
 	def add_contact(contact)
-		contact.id = @@ids
+		contact.id = @next_id
 		@contacts << contact
-		@@ids += 1
+		@next_id += 1
 	end
 
-	
+	def display_one(id)
+		contacts.each do |x|
+		  return x if x.id == id 
+		end
+	end
 
 
 	def display_id(contact)
