@@ -68,7 +68,10 @@ class CRM
 
 	def modify_contact
 	
+		puts "Enter the ID number of the contact you want to modify: "
+		modify_id = gets.chomp.to_i
 
+		
 
 
 	end
@@ -97,24 +100,17 @@ class CRM
 
 		puts "\nEnter an attribute to display: \n1 = First Name \n2 = Last Name \n3 = Email \n4 = Notes"
 		data = gets.chomp.to_i
-		puts ""
-			@rolodex.contacts.each do |contact|
-			case data 
-
-				when 1
-				puts "#{@rolodex.display_id(contact)}: #{contact.first_name}"
-				when 2
-				puts "#{@rolodex.display_id(contact)}: #{contact.last_name}"
-				when 3
-				puts "#{@rolodex.display_id(contact)}: " + contact.email
-				when 4
-				puts "#{@rolodex.display_id(contact)}: " + contact.note
-				else 
-				puts "\n****Please enter a number 1-4!****\n"
-				return display_attribute
-			end			
-		end
+		@rolodex.attributes(data)
+			
 	end
+
+	def delete_contact
+		
+		puts "Enter the ID of the contact you wish to delete: "
+		delete_id = gets.chomp.to_i
+		@rolodex.delete_a_contact(delete_id)
+	end
+
 
 	def add_sample_data
 		@rolodex.add_contact(Contact.new("Jimmy", "Bean", "jb101@sample.com", "He smells like wine."))
