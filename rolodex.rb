@@ -52,20 +52,28 @@ class Rolodex
 
 
 	def modify_a_contact(modify_id)
-		contacts.each do |x|
-		  if x.id == modify_id 
-		  	puts "Enter a new first name: "
-		  	x.first_name = gets.chomp.capitalize
-		  	
-		  	puts "Enter a new last name: "
-		  	x.last_name = gets.chomp.capitalize
 
-		  	puts "Enter a new email: "
-
-		  	x.email = gets.chomp
-		  end
+	contacts.each do |x| 
+	 if modify_id == x.id
+		puts "Enter a new first name: "
+		new_first = gets.chomp.capitalize
+		x.first_name = new_first
+		puts "Enter a new last name: "
+		new_last = gets.chomp.capitalize
+		x.last_name = new_last
+		puts "Enter a new email: "
+		new_email = gets.chomp
+		x.email = new_email
+		puts "Enter a new note: "
+		new_note = gets.chomp
+		x.note = new_note
+		puts ""
+		puts "Contact details Modified!"
+	else 
 
 		end
+		
+	end
 	end
 
 	def delete_a_contact(delete_id)

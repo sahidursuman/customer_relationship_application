@@ -59,10 +59,10 @@ class CRM
 		email = gets.chomp 
 		print "Note: "
 		note = gets.chomp
-		
+
 		@contact = Contact.new(first_name, last_name, email, note)
-		@rolodex.add_contact(contact)
-		@rolodex.display_contact(contact)
+		@rolodex.add_contact(@contact)
+		@rolodex.display_contact(@contact)
 
 	end
 
@@ -70,7 +70,7 @@ class CRM
 	
 		puts "Enter the ID number of the contact you want to modify: "
 		modify_id = gets.chomp.to_i
-
+		@rolodex.modify_a_contact(modify_id)
 		
 
 
